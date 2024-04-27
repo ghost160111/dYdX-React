@@ -1,22 +1,7 @@
+import { createRoot } from "react-dom/client";
 import "./assets/sass/style.scss";
-import App from "./components/App.ts";
-import animate from "./plugins/ReactiveElement/Utils/Animate.ts";
+import React from "react";
+import App from "./components/ClassApp.tsx";
 
-animate({
-  node: document.body,
-  keyframes: [
-    { opacity: 0 },
-    { opacity: 1 }
-  ],
-  options: {
-    easing: "ease",
-    duration: 1000
-  }
-});
-
-const app = new App();
-app.main();
-
-setTimeout(() => {
-  app.deleteApp();
-}, 5000);
+const root = createRoot(document.querySelector(".app-wrapper"));
+root.render(<App title="This is props" />);
