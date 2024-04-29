@@ -73,6 +73,8 @@ export default class ReactiveElement extends HTMLElement implements ICustomEleme
     this.constructComponent(setupConfig, components);
   }
 
+  //#region METHODS
+
   /**
    * @description
    * This method is responsible for bulding whole component from scratch.
@@ -319,4 +321,6 @@ export default class ReactiveElement extends HTMLElement implements ICustomEleme
   public log(message: any, ...optionalParams: any[]): void {
     console.log(message, ...optionalParams);
   }
+
+  //#endregion
 }
