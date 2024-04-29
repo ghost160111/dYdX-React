@@ -121,7 +121,8 @@ export default {
         use: [
           "style-loader",
           "css-loader"
-        ]
+        ],
+        type: "asset/resource"
       },
       {
         test: /\.(sass|scss)$/,

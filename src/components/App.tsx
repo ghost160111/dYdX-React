@@ -1,4 +1,5 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
+import AppHeader from "./Layout/Header/AppHeader";
 
 export interface AppProps {
   title: string;
@@ -7,25 +8,36 @@ export interface AppProps {
 class App extends React.Component {
   constructor(props: AppProps) {
     super(props);
-    this.onInputHandler = this.onInputHandler.bind(this);
-  }
 
-  state: Readonly<{}> = {
-    title: "This is title"
+    this.ctrlKClick = this.ctrlKClick.bind(this);
   }
 
   render(): React.ReactNode {
     return (
       <>
-        <h1 ref-data={this.props["title"]}>{this.props["title"]}</h1>
-        <h2>This is title - {this.state["title"]}</h2>
-        <input type="text" onInput={this.onInputHandler} />
+        <AppHeader />
       </>
     );
   }
 
-  public onInputHandler(event: any): void {
-    this.setState({ title: event.target.value });
+  componentDidMount(): void {
+    console.log("Component is mounted!");
+    document.addEventListener("keydown", this.ctrlKClick);
+  }
+
+  componentWillUnmount(): void {
+    console.log("Component is unmounted!");
+    document.removeEventListener("keydown", this.ctrlKClick);
+  }
+
+  componentDidUpdate(prevProps: Readonly<{}>, prevState: Readonly<{}>, snapshot?: any): void {
+    console.log(prevProps, prevState, snapshot);
+  }
+
+  public ctrlKClick(event: KeyboardEvent): void {
+    if (event.ctrlKey && event.key === "z") {
+      console.log("Clicked on CTRL + Z");
+    }
   }
 }
 
