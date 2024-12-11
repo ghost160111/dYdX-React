@@ -1,16 +1,13 @@
-import { PureComponent, ReactNode } from "react";
+import { PureComponent } from "react";
 import { classNameToggler } from "utils/hooks/classNameHooks";
+import { COMPONENT } from "services/utils/Injectors";
 import styles from "./CheckboxSVG.module.scss";
 
-class CheckboxSVG extends PureComponent<CheckboxSVGProps> {
-  get computedSvgClassName(): string {
-    return classNameToggler(styles["custom-checkbox__svg"], styles["custom-checkbox__svg--checked"], this.props.isChecked);
-  }
-
-  render(): ReactNode {
+@COMPONENT<CheckboxSVG>({
+  template: (_this) => {
     return (
       <svg
-        className={this.computedSvgClassName}
+        className={_this.computedSvgClassName}
         xmlns="http://www.w3.org/2000/svg"
         width="14"
         height="10"
@@ -25,6 +22,11 @@ class CheckboxSVG extends PureComponent<CheckboxSVGProps> {
         />
       </svg>
     );
+  }
+})
+class CheckboxSVG extends PureComponent<CheckboxSVGProps> {
+  get computedSvgClassName(): string {
+    return classNameToggler(styles["custom-checkbox__svg"], styles["custom-checkbox__svg--checked"], this.props.isChecked);
   }
 }
 

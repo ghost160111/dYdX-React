@@ -1,17 +1,17 @@
-import { PureComponent, ReactNode } from "react";
+import { ReactNode } from "react";
 import styles from "./Layout.module.scss";
 import Main from "components/Layout/Main/Main";
-import UIHeader from "components/Layout/Header/Header";
+import UIHeader from "components/Layout/Header/Header/Header";
+import InternetState from "components/InternetState/InternetState";
 
-class Layout extends PureComponent<LayoutProps, LayoutState> {
-  render(): ReactNode {
-    return (
-      <div className={styles["layout"]}>
-        <UIHeader title="Header Title" />
-        <Main routes={this.props.routes} />
-      </div>
-    );
-  }
+function Layout(props: LayoutProps): ReactNode {
+  return (
+    <div className={styles["layout"]}>
+      <UIHeader title="Header Title" />
+      <Main routes={props.routes} />
+      <InternetState />
+    </div>
+  );
 }
 
 export default Layout;

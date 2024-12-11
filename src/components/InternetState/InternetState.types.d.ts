@@ -1,5 +1,6 @@
 declare global {
-  interface InternetStateProps {
+  interface InternetStateProps {}
+  interface InternetStateState {
     isOnline: boolean;
   }
 }

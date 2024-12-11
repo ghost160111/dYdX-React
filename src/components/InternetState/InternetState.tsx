@@ -1,28 +1,29 @@
-import { PureComponent, ReactNode } from "react";
-import styles from "./InternetState.module.scss";
+import { COMPONENT } from "services/utils/Injectors";
+import { InternetStateComputed, InternetStateMethods } from "./InternetState.utils";
+import UIReact from "utils/classes/UIReact";
 
-class InternetState extends PureComponent<InternetStateProps> {
-  get computedOnlineStatus(): string {
-    return this.props.isOnline ? ":)" : ":(";
-  }
-
-  get computedOnlineState(): string {
-    return this.props.isOnline ? "Back with internet." : "Oops, no internet!";
-  }
-
-  get computedOnlineStateClassName(): string {
-    return this.props.isOnline
-      ? styles["internet-state"]
-      : `${styles["internet-state"]} ${styles["internet-state--active"]}`;
-  }
-
-  render(): ReactNode {
+@COMPONENT<InternetState>({
+  template: (_this) => {
     return (
-      <div className={this.computedOnlineStateClassName}>
-        <h1>Internet Status {this.computedOnlineStatus}</h1>
-        <p>{this.computedOnlineState}</p>
+      <div className={_this.computed.onlineStateClassName}>
+        <h1>Internet Status {_this.computed.onlineStatus}</h1>
+        <p>{_this.computed.onlineState}</p>
       </div>
     );
+  }
+})
+class InternetState extends UIReact<InternetStateProps, InternetStateState> {
+  methods: InternetStateMethods<InternetState> = new InternetStateMethods(this);
+  computed: InternetStateComputed<InternetState> = new InternetStateComputed(this);
+
+  state: Readonly<InternetStateState> = {
+    isOnline: navigator.onLine,
+  };
+
+  componentDidMount(): void {
+    const { eventOptions } = this.computed;
+    window.addEventListener("online", this.methods.onLine, eventOptions);
+    window.addEventListener("offline", this.methods.offLine, eventOptions);
   }
 }
 

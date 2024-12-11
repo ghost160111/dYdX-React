@@ -1,5 +1,5 @@
-import SpinnerLoaderWrapperFixed from "components/Loaders/SpinnerLoaderWrapperFixed";
 import { ReactNode, Suspense } from "react";
+import SpinnerLoaderWrapperFixed from "components/Loaders/SpinnerLoaderWrapperFixed";
 
 export function LazyLoaded(children: ReactNode): ReactNode {
   return (
