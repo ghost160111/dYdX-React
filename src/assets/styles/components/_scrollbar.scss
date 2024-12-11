@@ -1,0 +1,14 @@
+@use "assets/styles/modules/functions";
+
+.scrollbar {
+  &::-webkit-scrollbar {
+    background-color: rgb(24, 24, 24);
+    width: functions.rem(6);
+    border-radius: functions.rem(8);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(65, 65, 65);
+    border-radius: functions.rem(8);
+  }
+}

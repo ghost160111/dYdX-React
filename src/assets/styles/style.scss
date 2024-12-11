@@ -1,0 +1,26 @@
+@use "./plugins/_plugins";
+@use "./helpers/_helpers";
+@use "./base/_base";
+@use "./components/_components";
+@use "./main.scss";
+
+#app {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  width: 100%;
+  height: 100dvh;
+
+  background-color: var(--bg-primary);
+  background-image: url("assets/images/grid-boxes.svg");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 50%;
+  background-blend-mode: color-dodge;
+
+  @extend .scrollbar;
+}

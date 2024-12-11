@@ -1,0 +1,12 @@
+.test-title-state {
+  background: var(--green);
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+body.light-theme {
+  .test-title-state {
+    color: var(--white);
+  }
+}

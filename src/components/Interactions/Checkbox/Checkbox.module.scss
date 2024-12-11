@@ -1,0 +1,23 @@
+@use "assets/styles/modules/functions";
+
+.custom-checkbox {
+  position: relative;
+  display: block;
+  min-width: functions.rem(24);
+  max-width: functions.rem(24);
+  height: functions.rem(24);
+  background: #565656;
+  border: none;
+  border-radius: functions.rem(4);
+  font-size: 0;
+  transition: background-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &--checked,
+  &[aria-checked="true"] {
+    background: var(--green);
+  }
+
+  &:focus {
+    outline: 1px solid var(--white);
+  }
+}

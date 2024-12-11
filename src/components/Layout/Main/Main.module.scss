@@ -1,0 +1,11 @@
+.main-wrap {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.main {
+  display: block;
+}

@@ -1,0 +1,9 @@
+@use "assets/styles/modules/functions";
+
+.markdown-wrapper {
+  display: block;
+
+  ul {
+    margin-left: functions.rem(32);
+  }
+}

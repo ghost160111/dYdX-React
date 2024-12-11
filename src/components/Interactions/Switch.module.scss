@@ -1,0 +1,37 @@
+@use "assets/styles/modules/functions";
+
+.switch-btn {
+  position: relative;
+  display: block;
+  min-width: functions.rem(36);
+  max-width: functions.rem(36);
+  min-height: functions.rem(20);
+  max-width: functions.rem(20);
+  font-size: 0;
+  border-radius: functions.rem(25);
+  background: grey;
+  transition: background-color 0.3s ease;
+
+  &--active {
+    background: var(--green);
+  }
+}
+
+.switch-btn__circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(0);
+  display: block;
+  min-width: functions.rem(20);
+  max-width: functions.rem(20);
+  min-height: functions.rem(20);
+  max-width: functions.rem(20);
+  background: var(--white);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+
+  &--active {
+    transform: translate(functions.rem(16));
+  }
+}

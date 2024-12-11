@@ -1,0 +1,45 @@
+@use "../helpers/functions";
+@use "../helpers/variables";
+
+:root {
+  --container-lg: calc(50% - #{functions.rem(800)}); /* 1600 */
+  --container-md: calc(50% - #{functions.rem(660)}); /* 1320 */
+  --container-sm: calc(50% - #{functions.rem(600)}); /* 1200 */
+
+  --container-padding-sm: 15px;
+  --container-padding-md: calc(var(--container-padding-sm) * 2);
+  --container-padding-lg: calc(var(--container-padding-md) * 2);
+
+  @media (max-width: 1600px) {
+    --container-lg: 15px;
+  }
+
+  @media (max-width: 1300px) {
+    --container-md: #{functions.rem(20)};
+  }
+
+  @media (max-width: 1200px) {
+    --container-sm: 40px;
+  }
+
+  @media (max-width: variables.$tablet-view) {
+    --container-sm: 20px;
+    --container-md: 15px;
+  }
+
+  @media (max-width: variables.$mobile-view), (max-height: 500px) {
+    --container-sm: 15px;
+    --container-md: 15px;
+  }
+
+  @media (max-width: 360px) {
+    --container-sm: 10px;
+    --container-md: 15px;
+  }
+
+  @media (min-width: 850px) and (max-height: 500px) {
+    --container-sm: 20px;
+    --container-md: 40px;
+  }
+
+}

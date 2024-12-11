@@ -1,8 +1,11 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2015",
-    "experimentalDecorators": true
-  }
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

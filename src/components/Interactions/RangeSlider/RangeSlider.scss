@@ -1,0 +1,123 @@
+@use "assets/styles/modules/functions";
+
+input[type=range].custom-range-slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background: rgb(116, 116, 116);
+  width: 100%;
+  height: functions.rem(5);
+  border-radius: functions.rem(50);
+
+  background-image: linear-gradient(var(--green), var(--green));
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Chrome, Safari, Edge */
+input[type="range"].custom-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--white);
+
+  width: functions.rem(22);
+  height: functions.rem(22);
+
+  border: functions.rem(2) solid var(--green);
+  border-radius: 50%;
+}
+
+/* Firefox */
+input[type="range"].custom-range-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--white);
+
+  width: functions.rem(16);
+  height: functions.rem(16);
+
+  border: functions.rem(2) solid var(--green);
+  border-radius: 50%;
+}
+
+.custom-range-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  &--delay-effect {
+    & > .custom-range-popup {
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    }
+  }
+}
+
+.custom-range-popup {
+  position: absolute;
+  left: 0;
+  top: -3rem;
+  visibility: hidden;
+  opacity: 0;
+  min-width: functions.rem(25);
+  height: functions.rem(25);
+  background: var(--green);
+  padding-inline: functions.rem(4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: functions.rem(4);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.custom-range-popup__arrow {
+  position: absolute;
+  left: 50%;
+  top: 1rem;
+  transform: translate(-50%, 0) rotate(45deg);
+  min-width: 0.75rem;
+  min-height: 0.75rem;
+  border-top: 0.0625rem solid var(--green);
+  border-left: 0.0625rem solid var(--green);
+  border-radius: 0.125rem 0 0 0;
+  background: var(--green);
+  z-index: -1;
+}
+
+.custom-range-slider {
+  display: block;
+  font-size: functions.rem(16);
+  width: 100%;
+
+  position: relative;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+
+  &:active {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}

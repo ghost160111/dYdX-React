@@ -1,0 +1,8 @@
+@use "assets/styles/helpers/functions";
+
+@for $i from 1 through 250 {
+  .mb-#{$i} { margin-bottom: functions.rem($i) !important }
+  .ml-#{$i} { margin-left: functions.rem($i) !important }
+  .mt-#{$i} { margin-top: functions.rem($i) !important }
+  .mr-#{$i} { margin-right: functions.rem($i) !important }
+}

@@ -1,0 +1,11 @@
+.cesium-viewer {
+  display: block;
+  position: fixed;
+  top: 4.5rem;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 9.25rem);
+  overflow: hidden;
+  font-family: sans-serif;
+  font-size: 16px;
+}

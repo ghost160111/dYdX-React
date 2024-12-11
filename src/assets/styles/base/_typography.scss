@@ -1,0 +1,183 @@
+@use "assets/styles/helpers/variables";
+@use "assets/styles/helpers/functions";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+  font-size: calc((100vw - var(--vw-min-px)) / (var(--vw-max) - var(--vw-min)) * (var(--f-max) - var(--f-min)) + var(--f-min-px)) !important;
+}
+
+body {
+  font-family: var(--font-nunito);
+  font-size: variables.$fz;
+  font-weight: variables.$fw;
+  font-optical-sizing: auto;
+  line-height: variables.$lh;
+}
+
+.nunito-font {
+  font-family: var(--font-nunito);
+  font-optical-sizing: auto;
+}
+
+.space-mono-font {
+  font-family: var(--font-space-mono);
+}
+
+// nunito fonts
+
+.hero,
+.h-xlarge,
+.h-large,
+.h-medium,
+.h-small,
+.p-large,
+.p-medium,
+.p-small,
+.label {
+  font-family: var(--font-nunito);
+}
+
+.hero,
+.h-xlarge,
+.h-large,
+.h-medium,
+.h-small,
+.p-large,
+.label {
+  font-weight: bold;
+}
+
+.p-medium,
+.p-small {
+  font-weight: 400;
+}
+
+.hero {
+  font-size: functions.rem(80);
+  line-height: functions.rem(88);
+
+  &--mobile {
+    font-size: functions.rem(40);
+    line-height: functions.rem(48);
+  }
+}
+
+.h-xlarge {
+  font-size: functions.rem(60);
+  line-height: functions.rem(72);
+
+  &--mobile {
+    font-size: functions.rem(32);
+    line-height: functions.rem(40);
+  }
+}
+
+.h-large {
+  font-size: functions.rem(40);
+  line-height: functions.rem(48);
+
+  &--mobile {
+    font-size: functions.rem(24);
+    line-height: functions.rem(32);
+  }
+}
+
+.h-medium {
+  font-size: functions.rem(24);
+  line-height: functions.rem(32);
+
+  &--mobile {
+    font-size: functions.rem(20);
+    line-height: functions.rem(32);
+  }
+}
+
+.h-small {
+  font-size: functions.rem(20);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(16);
+    line-height: functions.rem(24);
+  }
+}
+
+.p-large {
+  font-size: functions.rem(18);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(16);
+    line-height: functions.rem(24);
+  }
+}
+
+.p-medium {
+  font-size: functions.rem(16);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(14);
+    line-height: functions.rem(20);
+  }
+}
+
+.p-small {
+  font-size: functions.rem(14);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(12);
+    line-height: functions.rem(20);
+  }
+}
+
+// mono fonts
+
+.p-mono-xlarge,
+.p-mono-large,
+.p-mono-medium,
+.p-mono-small {
+  font-family: var(--font-space-mono);
+  font-weight: normal;
+}
+
+.p-mono-xlarge {
+  font-size: functions.rem(20);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(20);
+    line-height: functions.rem(24);
+  }
+}
+
+.p-mono-large {
+  font-size: functions.rem(18);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(16);
+    line-height: functions.rem(24);
+  }
+}
+
+.p-mono-medium {
+  font-size: functions.rem(16);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(14);
+    line-height: functions.rem(20);
+  }
+}
+
+.p-mono-small {
+  font-size: functions.rem(14);
+  line-height: functions.rem(24);
+
+  &--mobile {
+    font-size: functions.rem(14);
+    line-height: functions.rem(20);
+  }
+}

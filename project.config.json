@@ -1,0 +1,18 @@
+{
+  "debug": false,
+  "origin": "https://api-green.tashkent.uz",
+  "layers": {
+    "ndvi": {
+      "opacity": 0.7,
+      "isActive": true
+    },
+    "maxalla": true,
+    "areas": true,
+    "parks": false,
+    "old-trees": false,
+    "areas-opacity": {
+      "opacity": 0.7,
+      "isActive":  true
+    }
+  }
+}

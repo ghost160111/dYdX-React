@@ -1,0 +1,130 @@
+@use "assets/styles/modules/functions";
+
+$dark-black: #212121;
+
+:root {
+  --dark-black: #{$dark-black};
+}
+
+.dropdown-selector {
+  display: block;
+  position: relative;
+  background: $dark-black;
+  border-radius: functions.rem(8);
+
+  &--transparent {
+    background: transparent;
+
+    & > .dropdown-selector__current {
+      background: transparent;
+    }
+  }
+
+  &--border {
+    & > .dropdown-selector__current {
+      border: functions.rem(1) solid #565656;
+    }
+
+    &--2 {
+      border-width: functions.rem(2);
+    }
+  }
+}
+
+.dropdown-selector__current {
+  display: flex;
+  justify-content: space-between;
+  gap: functions.rem(6);
+  background: $dark-black;
+  border-radius: functions.rem(8);
+  padding: 0 functions.rem(12);
+  width: 100%;
+  height: 2.5rem;
+  text-wrap: nowrap;
+
+  &.active {
+    color: var(--green);
+  }
+
+  &--hide-text {
+    font-size: 0;
+  }
+}
+
+.dropdown-selector__current__arrow-down {
+  height: 40%;
+  transition: transform 0.3s ease;
+
+  &.active {
+    transform: rotateX(180deg);
+  }
+}
+
+.dropdown-selector__list {
+  display: flex;
+  flex-flow: column;
+  gap: functions.rem(16);
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  top: functions.rem(45);
+  background: $dark-black;
+  width: 100%;
+  transition: all 300ms ease;
+  border-radius: functions.rem(8);
+  list-style: none;
+  padding: functions.rem(12);
+  overflow-y: auto;
+  max-height: 0;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    max-height: 8rem;
+  }
+
+  &--remove-full-width {
+    width: fit-content;
+  }
+}
+
+.dropdown-selector__list__btn {
+  font-size: functions.rem(16);
+  width: 100%;
+  text-align: left;
+  justify-content: left;
+  outline: none;
+
+  &.active {
+    display: none;
+  }
+
+  &:hover {
+    color: var(--green);
+  }
+
+  &:focus {
+    outline: 1px solid var(--white);
+  }
+}
+
+.period-dropdown {
+  z-index: 1;
+}
+
+.areas-dropdown {
+  z-index: 0;
+}
+
+body.light-theme {
+  .dropdown-selector__current {
+    color: var(--black);
+
+    &--transparent {
+      .dropdown-selector__current__arrow-down > path {
+        stroke: var(--black);
+      }
+    }
+  }
+}

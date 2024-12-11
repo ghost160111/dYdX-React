@@ -1,0 +1,63 @@
+@use "assets/styles/modules/functions";
+
+a.react-custom-btn,
+button.react-custom-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background: var(--green);
+  color: var(--white);
+  opacity: 1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  font-size: functions.rem(16);
+  font-family: var(--nunito-font);
+  font-weight: 500;
+  font-style: normal;
+
+  padding: functions.rem(12) functions.rem(16);
+  border: none;
+  border-radius: functions.rem(8);
+
+  width: fit-content;
+  text-wrap: nowrap;
+
+  &:focus {
+    outline: 2px solid var(--white);
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+
+  &--red {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  &--white {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  &--black {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  &--yellow {
+    background: var(--yellow);
+    color: var(--white);
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}
