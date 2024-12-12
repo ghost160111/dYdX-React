@@ -4,15 +4,18 @@ import { getWithTranslation } from "i18n/hooks";
 import { COMPONENT } from "services/utils/Injectors";
 import { withContext } from "components/Context/ContextInjector";
 import { HeaderRefContext } from "components/Context/ContextCollection";
+import styles from "./Header.module.scss";
 import windowMap from "store/mappers/window";
 import UIReact from "utils/classes/UIReact";
 import LangService from "services/classes/LangService";
-import Navigation from "../Navigation/Navigation";
+import Navigation from "components/Layout/Header/Navigation/Navigation";
+import Logo from "components/Layout/Header/Logo/Logo";
 
 @COMPONENT<Header>({
   template: (_this) => {
     return (
-      <header ref={_this.headerRef}>
+      <header className={_this.headerClass} ref={_this.headerRef}>
+        <Logo />
         <Navigation />
       </header>
     );
@@ -23,16 +26,15 @@ class Header extends UIReact<HeaderProps, HeaderState> {
   abortReason: string = "'Header is unmounted'";
   langService: LangService<Header> = new LangService(this);
 
+  get headerClass(): string {
+    return (this.props.headerIsActive)
+      ? `${styles["header"]} ${styles["header--bg-active"]}`
+      : styles["header"];
+  }
+
   componentDidMount(): void {
     this.props.setHeaderRef(this.headerRef);
-    window.addEventListener("DOMContentLoaded", this.onDOMContentLoaded, { signal: this.controller.signal });
   }
-
-  customEvent = (): void => {
-    alert("Custom Event Triggered!");
-  }
-
-  onDOMContentLoaded = () => console.log("DOMContentLoaded event");
 }
 
 const TranslatedHeader = getWithTranslation(Header);

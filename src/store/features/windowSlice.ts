@@ -2,9 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 declare global {
   type ModalWindowKeys =
-    | "Home"
-    | "About"
-    | "News";
+    | "Home";
 }
 
 export interface WindowState {

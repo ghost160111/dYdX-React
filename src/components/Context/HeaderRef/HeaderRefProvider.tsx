@@ -4,6 +4,7 @@ import { HeaderRefContext } from "../ContextCollection";
 class HeaderRefProvider extends PureComponent<PropsWithChildren, HeaderRefState> {
   state: Readonly<HeaderRefState> = {
     headerRef: null,
+    headerIsActive: null,
   };
 
   render(): ReactNode {
@@ -12,7 +13,8 @@ class HeaderRefProvider extends PureComponent<PropsWithChildren, HeaderRefState>
         value={{
           ...this.state,
           setHeaderRef: this.setHeaderRef,
-          removeHeaderRef: this.removeHeaderRef
+          removeHeaderRef: this.removeHeaderRef,
+          setHeaderBgState: this.setHeaderBgState,
         }}
       >
         {this.props.children}
@@ -21,11 +23,18 @@ class HeaderRefProvider extends PureComponent<PropsWithChildren, HeaderRefState>
   }
 
   setHeaderRef = (ref: RefObject<HTMLElement>): void => {
-    this.setState({ headerRef: ref });
+    this.setState(prevState => ({ ...prevState, headerRef: ref }));
   }
 
   removeHeaderRef = (): void => {
-    this.setState({ headerRef: null });
+    this.setState(prevState => ({ ...prevState, headerRef: null }));
+  }
+
+  setHeaderBgState = (state: boolean): void => {
+    this.setState(prevState => ({
+      ...prevState,
+      headerIsActive: state,
+    }));
   }
 }
 

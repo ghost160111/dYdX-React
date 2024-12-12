@@ -1,6 +1,29 @@
+@use "assets/styles/helpers/functions";
+
 .header {
+  position: fixed;
+  left: 50%;
+  top: functions.rem(24);
+  transform: translate(-50%);
   display: flex;
-  flex-flow: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  visibility: visible;
+  opacity: 1;
+  width: calc(100% - functions.rem(32));
+  height: functions.rem(72);
+  border-radius: functions.rem(8);
+  z-index: 100;
+  transition: opacity 300ms,
+              visibility 300ms,
+              background-color 150ms;
+
+  &--hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &--bg-active {
+    background: var(--bg-secondary);
+  }
 }

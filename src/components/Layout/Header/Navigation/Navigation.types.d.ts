@@ -1,6 +1,9 @@
 declare global {
+  interface NavItem {}
   interface NavigationProps {}
-  interface NavigationState {}
+  interface NavigationState {
+    navList: NavItem[];
+  }
 }
 
 export {}

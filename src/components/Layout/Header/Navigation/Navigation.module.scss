@@ -1,6 +1,7 @@
-/* Styles for Navigation component */
-.container {
+.nav {
+  display: block;
+}
+
+.nav__list {
   display: flex;
-  align-items: center;
-  justify-content: center;
 }

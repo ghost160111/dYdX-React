@@ -2,12 +2,9 @@ import { WithTranslation } from "react-i18next";
 import { WindowProps } from "store/features/windowSlice";
 
 declare global {
-  interface HeaderProps extends WithTranslation, WindowProps, HeaderRefProps {
-    title: string;
-  }
-
+  interface HeaderProps extends WithTranslation, WindowProps, HeaderRefProps {}
   interface HeaderState {
-    title: string;
+    headerIsActive: boolean;
   }
 }
 
