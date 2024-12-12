@@ -27,7 +27,7 @@ class Header extends UIReact<HeaderProps, HeaderState> {
   langService: LangService<Header> = new LangService(this);
 
   get headerClass(): string {
-    return (this.props.headerIsActive)
+    return this.props.headerIsActive
       ? `${styles["header"]} ${styles["header--bg-active"]}`
       : styles["header"];
   }
