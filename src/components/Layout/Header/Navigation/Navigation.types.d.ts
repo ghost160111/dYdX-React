@@ -1,8 +1,15 @@
+import { WithTranslation } from "react-i18next";
+
 declare global {
-  interface NavItem {}
-  interface NavigationProps {}
+  interface NavItem {
+    text?: string;
+    tKey?: string;
+    to: string;
+  }
+
+  interface NavigationProps extends WithTranslation {}
   interface NavigationState {
-    navList: NavItem[];
+    navMap: Map<string, NavItem>;
   }
 }
 

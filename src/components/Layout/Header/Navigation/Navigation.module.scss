@@ -1,7 +1,50 @@
+@use "assets/styles/helpers/functions";
+
 .nav {
   display: block;
 }
 
 .nav__list {
   display: flex;
+  list-style: none;
+  gap: functions.rem(32);
+  width: 100%;
+}
+
+.nav__link {
+  font-size: functions.rem(16);
+  color: var(--ti-secondary);
+  transition: color 150ms, background-color 150ms, opacity 300ms;
+  padding: functions.rem(12) functions.rem(16);
+  border-radius: functions.rem(8);
+  text-wrap: nowrap;
+
+  &:hover {
+    color: var(--ti-primary);
+    background: var(--bg-secondary);
+  }
+
+  &:active {
+    color: var(--ti-primary);
+    background: transparent;
+    transition-delay: 150ms;
+  }
+
+  &--active {
+    background: var(--bg-secondary);
+  }
+
+  &--apply-for-grant {
+    background: var(--accent-brand);
+    color: var(--ti-primary);
+
+    &:hover {
+      opacity: 1;
+      background: var(--accent-brand-hover);
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
 }

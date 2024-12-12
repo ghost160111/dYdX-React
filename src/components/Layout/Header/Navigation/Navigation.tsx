@@ -1,19 +1,29 @@
-import { PureComponent, ReactNode } from "react";
-import { generateNavLinks } from "./Navigation.utils";
 import styles from "./Navigation.module.scss";
+import LangService from "services/classes/LangService";
+import { PureComponent } from "react";
+import { getWithTranslation } from "i18n/hooks";
+import { COMPONENT } from "services/utils/Injectors";
+import { navMap } from "./Navigation.constants";
+import { NavigationComputed } from "./Navigation.utils";
 
-class Navigation extends PureComponent<NavigationProps, NavigationState> {
-  state: Readonly<NavigationState> = {
-    navList: generateNavLinks(this),
-  };
-
-  render(): ReactNode {
+@COMPONENT<Navigation>({
+  template: (_this) => {
     return (
       <nav className={styles["nav"]}>
-        <ul className={styles["nav__list"]}></ul>
+        <ul className={styles["nav__list"]}>
+          {_this.computed.navList}
+        </ul>
       </nav>
     );
-  }
+  },
+})
+class Navigation extends PureComponent<NavigationProps, NavigationState> {
+  langService: LangService<Navigation> = new LangService(this);
+  computed: NavigationComputed<Navigation> = new NavigationComputed(this);
+  state: Readonly<NavigationState> = { navMap };
 }
 
-export default Navigation;
+const UINavigation = getWithTranslation(Navigation);
+
+export { Navigation };
+export default UINavigation;

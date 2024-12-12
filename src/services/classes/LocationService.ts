@@ -1,5 +1,19 @@
 import IService from "./IService";
 
+export function withoutLangPathname(): string {
+  let finalPathname: string = "";
+  const splittedPathname: string[] = location.pathname.split("/");
+
+  for (let i = 0; i < splittedPathname.length; ++i) {
+    const path = splittedPathname[i];
+    if (i > 1) {
+      finalPathname += `/${path}`;
+    }
+  }
+
+  return finalPathname;
+}
+
 class LocationService<CTX> extends IService<CTX> {
   get pathname(): string {
     return location.pathname;
@@ -14,16 +28,7 @@ class LocationService<CTX> extends IService<CTX> {
   }
 
   get withoutLangPathname(): string {
-    let finalPathname: string = "";
-
-    for (let i = 0; i < this.splittedPathname.length; ++i) {
-      const path = this.splittedPathname[i];
-      if (i > 1) {
-        finalPathname += `/${path}`;
-      }
-    }
-
-    return finalPathname;
+    return withoutLangPathname();
   }
 }
 

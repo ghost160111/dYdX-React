@@ -3,16 +3,15 @@
 .header {
   position: fixed;
   left: 50%;
-  top: functions.rem(24);
+  top: 0;
   transform: translate(-50%);
   display: flex;
   justify-content: space-between;
   align-items: center;
   visibility: visible;
   opacity: 1;
-  width: calc(100% - functions.rem(32));
-  height: functions.rem(72);
-  border-radius: functions.rem(8);
+  width: 100%;
+  padding: functions.rem(16) functions.rem(32);
   z-index: 100;
   transition: opacity 300ms,
               visibility 300ms,

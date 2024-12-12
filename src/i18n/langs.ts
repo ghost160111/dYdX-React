@@ -7,8 +7,8 @@ import { getLanguageFromPath, onLanguageChanged } from "i18n/hooks";
 i18next
 .use(initReactI18next)
 .init({
-  lng: getLanguageFromPath() ?? "ru", // Default language
-  fallbackLng: "ru",
+  lng: getLanguageFromPath() ?? "en", // Default language
+  fallbackLng: "en",
   debug,
   resources,
   interpolation: {

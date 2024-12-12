@@ -42,5 +42,5 @@ export const onLanguageChanged = (lng: string): void => {
 export const getLanguageFromPath = (): string => {
   const lang: string = location.pathname.split("/")[1];
   const supported: boolean = supportedLanguages.includes(lang);
-  return supported ? lang : "ru";
+  return supported ? lang : "en";
 }

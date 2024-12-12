@@ -22,14 +22,14 @@ import Logo from "components/Layout/Header/Logo/Logo";
   }
 })
 class Header extends UIReact<HeaderProps, HeaderState> {
-  headerRef: RefObject<HTMLElement> = createRef<HTMLElement>();
   abortReason: string = "'Header is unmounted'";
+  headerRef: RefObject<HTMLElement> = createRef<HTMLElement>();
   langService: LangService<Header> = new LangService(this);
 
   get headerClass(): string {
     return this.props.headerIsActive
-      ? `${styles["header"]} ${styles["header--bg-active"]}`
-      : styles["header"];
+      ? `${styles.header} ${styles["header--bg-active"]}`
+      : styles.header;
   }
 
   componentDidMount(): void {
