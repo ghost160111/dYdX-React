@@ -7,7 +7,7 @@ import InternetState from "components/InternetState/InternetState";
 function Layout(props: LayoutProps): ReactNode {
   return (
     <div className={styles["layout"]}>
-      <UIHeader title="Header Title" />
+      <UIHeader />
       <Main routes={props.routes} />
       <InternetState />
     </div>

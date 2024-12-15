@@ -46,14 +46,16 @@ class RevealAnimation extends PureComponent<RevealAnimationProps, RevealAnimatio
       });
 
       return { ...prevState, isIntersecting };
-    }, () => {
-      if (this.props.logSnapshot) {
-        console.log({
-          isIntersecting,
-          container: this.containerRef.current,
-        });
-      }
-    });
+    }, () => this.onStateUpdate(isIntersecting));
+  }
+
+  onStateUpdate(isIntersecting: boolean): void {
+    if (this.props.logSnapshot) {
+      console.log({
+        isIntersecting,
+        container: this.containerRef.current,
+      });
+    }
   }
 }
 
