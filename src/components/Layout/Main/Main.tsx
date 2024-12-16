@@ -5,7 +5,7 @@ import { HeaderRefContext, MainRefContext } from "components/Context/ContextColl
 import { COMPONENT } from "services/utils/Injectors";
 import styles from "./Main.module.scss";
 import Footer from "components/Layout/Footer/Footer/Footer";
-import ReactComponent from "utils/classes/ReactComponent";
+import UIReact from "utils/classes/UIReact";
 
 @COMPONENT<Main>({
   template: (_this) => {
@@ -22,7 +22,7 @@ import ReactComponent from "utils/classes/ReactComponent";
     );
   }
 })
-class Main extends ReactComponent<MainProps, MainState> {
+class Main extends UIReact<MainProps, MainState> {
   mainWrap: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
   mainWrapMargin: number = 24;
   appRef: HTMLElement;

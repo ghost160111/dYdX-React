@@ -1,6 +1,13 @@
-/* Styles for MobileNav component */
-.container {
+.mobile-menu__nav-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-flow: column;
+  width: 100%;
+}
+
+.mobile-menu__nav-item {
+  display: block;
+
+  &--active {
+    color: var(--accent-brand);
+  }
 }

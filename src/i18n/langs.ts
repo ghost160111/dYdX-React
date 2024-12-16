@@ -7,12 +7,12 @@ import { getLanguageFromPath, onLanguageChanged } from "i18n/hooks";
 i18next
 .use(initReactI18next)
 .init({
-  lng: getLanguageFromPath() ?? "en", // Default language
+  lng: getLanguageFromPath() ?? "en",
   fallbackLng: "en",
   debug,
   resources,
   interpolation: {
-    escapeValue: false, // React already does escaping
+    escapeValue: false,
   },
 });
 

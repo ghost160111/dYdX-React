@@ -42,3 +42,10 @@ export const navMap: Map<string, NavItem> = new Map<string, NavItem>([
     },
   ],
 ]);
+
+export const langList: SelectItem[] = [
+  { id: "en", content: "En" },
+  { id: "ru", content: "Ру" },
+  { id: "uz", content: "Уз" },
+  { id: "oz", content: "O'z" },
+];

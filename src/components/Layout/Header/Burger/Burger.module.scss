@@ -1,0 +1,29 @@
+@use "assets/styles/helpers/functions";
+
+.burger-btn {
+  display: block;
+  position: relative;
+  background: transparent;
+  width: functions.rem(40);
+  height: functions.rem(40);
+  border: none;
+  cursor: pointer;
+}
+
+.burger-btn__svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  visibility: hidden;
+  width: functions.rem(32);
+  height: functions.rem(32);
+  transition: transform 50ms, opacity 300ms, visibility 300ms;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

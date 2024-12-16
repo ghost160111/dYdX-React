@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from "react";
-import HeaderRefProvider from "./HeaderRef/HeaderRefProvider";
-import FancyboxProvider from "./Fancybox/FancyboxProvider";
-import MainRefProvider from "./MainRef/MainRefProvider";
+import HeaderRefProvider from "components/Context/HeaderRef/HeaderRefProvider";
+import FancyboxProvider from "components/Context/Fancybox/FancyboxProvider";
+import MainRefProvider from "components/Context/MainRef/MainRefProvider";
 
 function ContextProviders(props: PropsWithChildren): ReactNode {
   return (

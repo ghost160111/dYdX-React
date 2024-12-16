@@ -1,35 +1,37 @@
-import { PureComponent, ReactNode } from "react";
+import { PureComponent } from "react";
 import styles from "./Home.module.scss";
-import { connect } from "react-redux";
-import windowMap from "store/mappers/window";
+import MarkdownToJsx from "components/Markdown/Markdown";
+import { COMPONENT } from "services/utils/Injectors";
 
-class Home extends PureComponent<HomeProps, HomeState> {
-  get computedEscapeEvtState(): string {
-    return this.props.isEscapeEvtEnabled ? "ACTIVE" : "INACTIVE";
-  }
+const markdownContent: string = `
+# Todo List
 
-  get computedToggleBtnText(): string {
-    return `Window Escape Event is ${this.computedEscapeEvtState}`;
-  }
+* [ ] Write all language content in 4 different languages
+* [ ] Layout:
+  * [x] Header
+  * [x] Main
+  * [ ] Footer
+* [ ] Views:
+  * [ ] Home
+  * [ ] Discover initiatives
+  * [ ] Funded grants
+  * [ ] Program expenses
+  * [ ] Blog
+  * [ ] FAQ
+  * [ ] Apply for grant
+`;
 
-  render(): ReactNode {
+@COMPONENT<Home>({
+  template: () => {
     return (
-      <div className={styles["container"]}>
+      <div className={styles.container}>
         <h1>Home component</h1>
-        <button
-          type="button"
-          onClick={this.toggleEscapeEvt}
-        >{this.computedToggleBtnText}</button>
+        <MarkdownToJsx children={markdownContent} />
       </div>
-    );
+    )
   }
-
-  toggleEscapeEvt = () => this.props.setEscapeEvt(!this.props.isEscapeEvtEnabled);
+})
+class Home extends PureComponent<HomeProps, HomeState> {
 }
 
-const UIHome = connect(
-  windowMap.mapStateToProps,
-  windowMap.mapDispatchProps
-)(Home);
-
-export default UIHome;
+export default Home;

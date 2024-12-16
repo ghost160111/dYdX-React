@@ -10,6 +10,7 @@ declare global {
   interface NavigationProps extends WithTranslation {}
   interface NavigationState {
     navMap: Map<string, NavItem>;
+    burgerShouldBeRendered: boolean;
   }
 }
 

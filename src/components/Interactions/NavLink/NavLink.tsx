@@ -7,6 +7,7 @@ interface NavLinkProps extends PropsWithChildren {
   activeClassName: string;
   to: string;
   lang?: string;
+  onClick?: () => void;
 }
 
 class NavLink extends PureComponent<NavLinkProps> {
@@ -20,6 +21,7 @@ class NavLink extends PureComponent<NavLinkProps> {
       <RRNavLink
         className={this.getClassName}
         to={this.pathname}
+        onClick={this.props.onClick}
       >
         {this.props.children}
       </RRNavLink>
