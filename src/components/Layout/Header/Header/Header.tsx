@@ -1,15 +1,18 @@
-import { createRef, RefObject } from "react";
+import styles from "./Header.module.scss";
 import { connect } from "react-redux";
+import { createRef, RefObject } from "react";
 import { getWithTranslation } from "i18n/hooks";
 import { COMPONENT } from "services/utils/Injectors";
 import { withContext } from "components/Context/ContextInjector";
 import { HeaderRefContext } from "components/Context/ContextCollection";
-import styles from "./Header.module.scss";
 import windowMap from "store/mappers/window";
 import UIReact from "utils/classes/UIReact";
 import LangService from "services/classes/LangService";
 import Navigation from "components/Layout/Header/Navigation/Navigation";
 import Logo from "components/Layout/Header/Logo/Logo";
+
+const headerClass: string = styles.header;
+const headerClassActive: string = styles["header--bg-active"];
 
 @COMPONENT<Header>({
   template: (_this) => {
@@ -27,9 +30,8 @@ class Header extends UIReact<HeaderProps, HeaderState> {
   langService: LangService<Header> = new LangService(this);
 
   get headerClass(): string {
-    return this.props.headerIsActive
-      ? `${styles.header} ${styles["header--bg-active"]}`
-      : styles.header;
+    const activeClass: string = this.props.headerIsActive ? headerClassActive : "";
+    return `${headerClass} ${activeClass}`;
   }
 
   componentDidMount(): void {

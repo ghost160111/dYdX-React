@@ -5,7 +5,8 @@ declare global {
   type SelectColors =
     | "black"
     | "orange"
-    | "transparent";
+    | "transparent"
+    | "brand";
 
   interface SelectItem {
     id: string;

@@ -1,10 +1,10 @@
+import styles from "./Select.module.scss";
 import { ReactNode } from "react";
 import { getWithTranslation } from "i18n/hooks";
 import SVG_ArrowDown from "components/SVG/SVG_ArrowDown";
-import styles from "./Select.module.scss";
-import ReactComponent from "utils/classes/ReactComponent";
+import UIReact from "utils/classes/UIReact";
 
-class Select extends ReactComponent<SelectProps, SelectState> {
+class Select extends UIReact<SelectProps, SelectState> {
   state: Readonly<SelectState> = {
     selected: { ...this.props.selected },
     toggled: false,
@@ -26,7 +26,7 @@ class Select extends ReactComponent<SelectProps, SelectState> {
 
   get computedColor(): string {
     const className: string = this.props.addTransitions ? `${styles["select__btn"]} ${styles["select__btn--transition"]}` : styles["select__btn"];
-    let finalClassName: string;
+    let finalClassName: string = className;
 
     function computedClassName(modifierClass: SelectColors): string {
       return className + " " + styles[`select__btn--${modifierClass}`];
@@ -41,6 +41,9 @@ class Select extends ReactComponent<SelectProps, SelectState> {
         break;
       case "orange":
         finalClassName = computedClassName("orange");
+        break;
+      case "brand":
+        finalClassName = computedClassName("brand");
         break;
     }
 
@@ -150,7 +153,10 @@ class Select extends ReactComponent<SelectProps, SelectState> {
         content,
         tKey,
       },
-    }), () => this.props.onSelect(id, content, tKey));
+    }), () => {
+      if (!this.props.onSelect) return;
+      this.props.onSelect(id, content, tKey);
+    });
   }
 
   handleOutsideClick = (evt: MouseEvent): void => {
@@ -180,6 +186,6 @@ class Select extends ReactComponent<SelectProps, SelectState> {
   }
 }
 
-const InjectedSelect = getWithTranslation(Select);
+const UISelect = getWithTranslation(Select);
 
-export default InjectedSelect;
+export default UISelect;

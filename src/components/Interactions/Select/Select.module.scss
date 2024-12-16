@@ -4,6 +4,10 @@
   position: relative;
   display: block;
 
+  button {
+    border: none;
+  }
+
   &--active {
     .select__btn > svg {
       transform: rotateX(180deg);
@@ -24,6 +28,7 @@
   padding-top: functions.rem(4);
   border-radius: functions.rem(4);
   gap: functions.rem(8);
+  cursor: pointer;
 
   &--transition {
     & > svg {
@@ -54,7 +59,7 @@
       }
 
       &--active {
-        background: var(--green);
+        background: var(--accent-brand);
         color: var(--white);
 
         &:hover {
@@ -70,6 +75,32 @@
 
   &--black {
     background: var(--black);
+  }
+
+  &--brand {
+    background: var(--accent-brand);
+    color: var(--white);
+
+    & ~ .select__list > li > .select__list__item-btn {
+      color: var(--black);
+
+      &:hover {
+        color: var(--accent-brand);
+      }
+
+      &:active {
+        opacity: 0.85;
+      }
+
+      &--active {
+        background: var(--accent-brand);
+        color: var(--white);
+
+        &:hover {
+          color: var(--white);
+        }
+      }
+    }
   }
 
   &--orange {
@@ -148,6 +179,7 @@
   text-align: left;
   padding: functions.rem(4) functions.rem(8);
   color: var(--black);
+  cursor: pointer;
 
   &--transition {
     transition: all 300ms;
