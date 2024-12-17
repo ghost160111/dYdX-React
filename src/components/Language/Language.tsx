@@ -1,40 +1,67 @@
-import { langList } from "components/Layout/Header/Navigation/Navigation.constants";
+import { createRef, RefObject } from "react";
 import { getWithTranslation } from "i18n/hooks";
-import { PureComponent } from "react";
-import { LanguageComputed, LanguageMethods } from "./Language.utils";
 import { COMPONENT } from "services/utils/Injectors";
-import UISelect from "components/Interactions/Select/Select";
+import { LanguageClasses, LanguageComputed, LanguageMethods } from "./Language.utils";
+import debug from "constants/debug";
 import LangService from "services/classes/LangService";
+import UIReact from "utils/classes/UIReact";
+import arrowDownSvg from "assets/images/arrow-down.svg";
+import "./Language.scss";
 
 @COMPONENT<Language>({
   template: (_this) => {
     return (
-      <UISelect
-        color={"brand"}
-        arrowColor={"var(--white)"}
-        addTransitions={true}
-        list={_this.state.langList}
-        selected={_this.computed.selected}
-        onSelect={_this.methods.onSelect}
-      />
+      <div className={_this.classes.computedLangSelectorClassName}>
+        <button
+          type="button"
+          ref={_this.langSelectorBtnRef}
+          onClick={_this.methods.dropdownIsActiveHandler}
+          onKeyDown={_this.methods.escapeKeydownHandler}
+          className={_this.classes.computedLangSelectorCurrentClassName}
+        >
+          {_this.computed.selectedLang}
+          <img
+            src={arrowDownSvg}
+            alt="Arrow down svg"
+            className={_this.classes.computedArrowDownClassName}
+          />
+        </button>
+        <ul className={_this.classes.computedLangSelectorListClassName}>
+          {_this.computed.menuList}
+        </ul>
+      </div>
     );
   }
 })
-class Language extends PureComponent<LanguageProps, LangaugeState> {
+class Language extends UIReact<LanguageProps, LanguageState> {
+  langSelectorBtnRef: RefObject<HTMLButtonElement> = createRef<HTMLButtonElement>();
   langService: LangService<Language> = new LangService(this);
-  computed: LanguageComputed<Language> = new LanguageComputed(this);
+  classes: LanguageClasses<Language> = new LanguageClasses(this);
   methods: LanguageMethods<Language> = new LanguageMethods(this);
+  computed: LanguageComputed<Language> = new LanguageComputed(this);
 
-  state: Readonly<LangaugeState> = {
-    langList,
+  state: Readonly<LanguageState> = {
+    lang: this.langService.lang,
+    dropdownIsOpen: false,
+    originalLangListOffsetHeight: 0,
+    langList: [
+      { lng: "ru", text: "Русский", curr: "Ру" },
+      { lng: "oz", text: "O'zbekcha", curr: "O'z" },
+      { lng: "uz", text: "Ўзбекча", curr: "Ўз" },
+      { lng: "en", text: "English", curr: "En" },
+    ],
   };
 
   componentDidMount(): void {
-    this.props.i18n.on("languageChanged", () => this.forceUpdate());
+    window.addEventListener("click", this.methods.handleOutsideClick, { signal: this.controller.signal });
+
+    if (debug) {
+      this.methods.onDebug();
+    }
   }
 }
 
-const UILanguage = getWithTranslation(Language);
+const UILangSelector = getWithTranslation(Language);
 
 export { Language };
-export default UILanguage;
+export default UILangSelector;
